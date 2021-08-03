@@ -39,4 +39,13 @@ I don't know why she swallowed a fly - perhaps she'll die!
 There was an old lady who swallowed a horse...
 ...She's dead, of course!"""
 
+def animalParagraph(animal, lastAnimal, firstAnimal):
+    animalParagraphText = """There was an old lady who swallowed a """ + animal + """;
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly;
+I don't know why she swallowed a fly - perhaps she'll die!"""
+
+animals = []
+
 print(song)
