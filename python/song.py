@@ -27,7 +27,6 @@ class Song:
             final_verse_of_the_song = self.final_verse_of_the_song.format(self.animals_for_song[0])
             return final_verse_of_the_song
         else:
-            amount_of_animals = len(self.animals_for_song)
             final_song = ""
             funny_verse_position = 0
             #Generando la cancion
@@ -37,7 +36,7 @@ class Song:
                     final_song += self.first_verse_of_the_song.format(animal)
                     final_song += "\n" + self.last_verse.format(animal)
                  #Verificando si el ultimo animal dentro de la iteracion, se genera el ultimo verso
-                elif position == amount_of_animals - 1:
+                elif position == len(self.animals_for_song) - 1:
                     final_song += "\n\n" + self.final_verse_of_the_song.format(animal)
                  #Se genera el resto de versos
                 else:
@@ -53,20 +52,17 @@ class Song:
                         #creacion de variable usada en while
                         amount_of_animals_for_use_in_middle_verse = position
                         while amount_of_animals_for_use_in_middle_verse > 0:
-                            first_animal_in_verse = self.animals_for_song[amount_of_animals_for_use_in_middle_verse]
-                            second_animal_in_verse = self.animals_for_song[
-                                amount_of_animals_for_use_in_middle_verse - 1]
                             if amount_of_animals_for_use_in_middle_verse > 1:
-                                final_song += "\n" + self.first_middle_verse.format(first_animal_in_verse,
-                                                                                    second_animal_in_verse)
+                                final_song += "\n" + self.first_middle_verse.format(self.animals_for_song[amount_of_animals_for_use_in_middle_verse],
+                                                                                    self.animals_for_song[amount_of_animals_for_use_in_middle_verse - 1])
                         #Se inserta el penultimo verso a diferencia de los demas tiene ";"
                             else:
-                                final_song += "\n" + self.middle_verse.format(first_animal_in_verse,
-                                                                              second_animal_in_verse)
+                                final_song += "\n" + self.middle_verse.format(self.animals_for_song[amount_of_animals_for_use_in_middle_verse],
+                                                                              self.animals_for_song[amount_of_animals_for_use_in_middle_verse - 1])
                              #Reduccion de la variable para usar todos los animales desde la posicion actual hasta el primer animal
                             amount_of_animals_for_use_in_middle_verse -= 1
                     else:
-                        final_song += "\n" + self.middle_verse.format(animal, self.animals_for_song[position - 1])
+                        final_song += "\n" + self.middle_verse.format(animal, self.animals_for_song[0])
                     final_song += "\n" + self.last_verse.format(self.animals_for_song[0])
                     #Verificando si es el ultimo funny_verses para resetear
                     if funny_verse_position == len(self.funny_verses) - 1:
